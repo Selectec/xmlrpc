@@ -102,8 +102,10 @@ namespace CookComputing.XmlRpc
 
 		string XmlRpcMethod { get; set; }
 
-		// introspecton methods
-		string[] SystemListMethods();
+        string ServerCertificateThumbprint { get; set; }
+
+        // introspecton methods
+        string[] SystemListMethods();
 		object[] SystemMethodSignature(string methodName);
 		string SystemMethodHelp(string methodName);
 

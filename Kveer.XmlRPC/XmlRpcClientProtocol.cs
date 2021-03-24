@@ -27,6 +27,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Net;
+using System.Net.Security;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -101,7 +102,9 @@ namespace CookComputing.XmlRpc
 #if (!COMPACT_FRAMEWORK)
 				SetClientCertificates(ClientCertificates, webReq);
 #endif
-				Stream serStream;
+                SetServerCertificateCallbackHandler(webReq);
+
+                Stream serStream;
 				Stream reqStream = null;
 				var logging = (RequestEvent != null);
 				if (!logging)
@@ -263,9 +266,11 @@ namespace CookComputing.XmlRpc
 
 		public string XmlRpcMethod { get; set; } = null;
 
-		#endregion
+        public string ServerCertificateThumbprint { get; set; } = null;
 
-		public void SetProperties(WebRequest webReq)
+#endregion
+
+        public void SetProperties(WebRequest webReq)
 		{
 			if (Proxy != null)
 				webReq.Proxy = Proxy;
@@ -315,7 +320,28 @@ namespace CookComputing.XmlRpc
 			}
 		}
 #endif
-		private static XmlRpcRequest MakeXmlRpcRequest(WebRequest webReq, MethodInfo mi,
+
+        private void SetServerCertificateCallbackHandler(WebRequest webReq)
+        {
+            if (string.IsNullOrWhiteSpace(ServerCertificateThumbprint))
+            {
+                return;
+            }
+
+            HttpWebRequest httpReq = (HttpWebRequest)webReq;
+            httpReq.ServerCertificateValidationCallback += ServerCertificateCallbackHandler;
+        }
+
+        private bool ServerCertificateCallbackHandler(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            if (sslPolicyErrors == SslPolicyErrors.None)
+            {
+                return true;
+            }
+            return ServerCertificateThumbprint.Equals(((X509Certificate2)cert).Thumbprint, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        private static XmlRpcRequest MakeXmlRpcRequest(WebRequest webReq, MethodInfo mi,
 		  object[] parameters, string xmlRpcMethod,
 		  Guid proxyId)
 		{
@@ -473,7 +499,9 @@ namespace CookComputing.XmlRpc
 #if (!COMPACT_FRAMEWORK)
 			SetClientCertificates(ClientCertificates, webReq);
 #endif
-			Encoding useEncoding = null;
+            SetServerCertificateCallbackHandler(webReq);
+
+            Encoding useEncoding = null;
 			if (XmlEncoding != null)
 				useEncoding = XmlEncoding;
 			XmlRpcAsyncResult asr = new XmlRpcAsyncResult(this, xmlRpcReq,
