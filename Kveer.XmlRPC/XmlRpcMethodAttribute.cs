@@ -27,29 +27,29 @@ using System;
 
 namespace CookComputing.XmlRpc
 {
-	[AttributeUsage(AttributeTargets.Method)]
-	public class XmlRpcMethodAttribute : Attribute
-	{
-		public string Description = "";
-		public bool   Hidden      = false;
+    [AttributeUsage(AttributeTargets.Method)]
+    public class XmlRpcMethodAttribute : Attribute
+    {
+        public string Description = "";
+        public bool Hidden = false;
 
-		public XmlRpcMethodAttribute() { }
+        public XmlRpcMethodAttribute() { }
 
-		public XmlRpcMethodAttribute(string method)
-		{
-			Method = method;
-		}
+        public XmlRpcMethodAttribute(string method)
+        {
+            Method = method;
+        }
 
-		public string Method { get; } = "";
+        public string Method { get; } = "";
 
-		public bool IntrospectionMethod { get; set; } = false;
+        public bool IntrospectionMethod { get; set; } = false;
 
-		public bool StructParams { get; set; } = false;
+        public bool StructParams { get; set; } = false;
 
-		public override string ToString()
-		{
-			var value = "Method : " + Method;
-			return value;
-		}
-	}
+        public override string ToString()
+        {
+            var value = "Method : " + Method;
+            return value;
+        }
+    }
 }

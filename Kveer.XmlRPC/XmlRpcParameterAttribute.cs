@@ -27,24 +27,24 @@ using System;
 
 namespace CookComputing.XmlRpc
 {
-	[AttributeUsage(AttributeTargets.Parameter)]
-	public class XmlRpcParameterAttribute : Attribute
-	{
-		public XmlRpcParameterAttribute() { }
+    [AttributeUsage(AttributeTargets.Parameter)]
+    public class XmlRpcParameterAttribute : Attribute
+    {
+        public XmlRpcParameterAttribute() { }
 
-		public XmlRpcParameterAttribute(string name)
-		{
-			Name = name;
-		}
+        public XmlRpcParameterAttribute(string name)
+        {
+            Name = name;
+        }
 
-		public string Name { get; } = "";
+        public string Name { get; } = "";
 
-		public string Description { get; set; } = "";
+        public string Description { get; set; } = "";
 
-		public override string ToString()
-		{
-			var value = "Description : " + Description;
-			return value;
-		}
-	}
+        public override string ToString()
+        {
+            var value = "Description : " + Description;
+            return value;
+        }
+    }
 }

@@ -28,59 +28,59 @@ using System;
 namespace CookComputing.XmlRpc
 {
 #if (!COMPACT_FRAMEWORK)
-	using System.Runtime.Serialization;
+    using System.Runtime.Serialization;
 
 #endif
 
-	// used to return server-side errors to client code - also can be 
-	// thrown by Service implmentation code to return custom Fault Responses
+    // used to return server-side errors to client code - also can be 
+    // thrown by Service implmentation code to return custom Fault Responses
 #if (!COMPACT_FRAMEWORK)
-	[Serializable]
+    [Serializable]
 #endif
-	public class XmlRpcFaultException : ApplicationException
-	{
-		// data
-		//
-		private readonly int _mFaultCode;
+    public class XmlRpcFaultException : ApplicationException
+    {
+        // data
+        //
+        private readonly int _mFaultCode;
 
-		private readonly string _mFaultString;
+        private readonly string _mFaultString;
 
-		// constructors
-		//
-		public XmlRpcFaultException(int theCode, string theString)
-			: base("Server returned a fault exception: [" + theCode +
-				   "] " + theString)
-		{
-			_mFaultCode   = theCode;
-			_mFaultString = theString;
-		}
+        // constructors
+        //
+        public XmlRpcFaultException(int theCode, string theString)
+            : base("Server returned a fault exception: [" + theCode +
+                   "] " + theString)
+        {
+            _mFaultCode = theCode;
+            _mFaultString = theString;
+        }
 #if (!COMPACT_FRAMEWORK)
-		// deserialization constructor
-		protected XmlRpcFaultException(
-			SerializationInfo info,
-			StreamingContext context)
-			: base(info, context)
-		{
-			_mFaultCode   = (int) info.GetValue("m_faultCode", typeof(int));
-			_mFaultString = (string) info.GetValue("m_faultString", typeof(string));
-		}
+        // deserialization constructor
+        protected XmlRpcFaultException(
+            SerializationInfo info,
+            StreamingContext context)
+            : base(info, context)
+        {
+            _mFaultCode = (int)info.GetValue("m_faultCode", typeof(int));
+            _mFaultString = (string)info.GetValue("m_faultString", typeof(string));
+        }
 #endif
-		// properties
-		//
-		public int FaultCode => _mFaultCode;
+        // properties
+        //
+        public int FaultCode => _mFaultCode;
 
-		public string FaultString => _mFaultString;
+        public string FaultString => _mFaultString;
 #if (!COMPACT_FRAMEWORK)
-		// public methods
-		//
-		public override void GetObjectData(
-			SerializationInfo info,
-			StreamingContext context)
-		{
-			info.AddValue("m_faultCode", _mFaultCode);
-			info.AddValue("m_faultString", _mFaultString);
-			base.GetObjectData(info, context);
-		}
+        // public methods
+        //
+        public override void GetObjectData(
+            SerializationInfo info,
+            StreamingContext context)
+        {
+            info.AddValue("m_faultCode", _mFaultCode);
+            info.AddValue("m_faultString", _mFaultString);
+            base.GetObjectData(info, context);
+        }
 #endif
-	}
+    }
 }

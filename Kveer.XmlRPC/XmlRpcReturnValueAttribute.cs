@@ -27,15 +27,15 @@ using System;
 
 namespace CookComputing.XmlRpc
 {
-	[AttributeUsage(AttributeTargets.ReturnValue)]
-	public class XmlRpcReturnValueAttribute : Attribute
-	{
-		public string Description { get; set; } = "";
+    [AttributeUsage(AttributeTargets.ReturnValue)]
+    public class XmlRpcReturnValueAttribute : Attribute
+    {
+        public string Description { get; set; } = "";
 
-		public override string ToString()
-		{
-			var value = "Description : " + Description;
-			return value;
-		}
-	}
+        public override string ToString()
+        {
+            var value = "Description : " + Description;
+            return value;
+        }
+    }
 }

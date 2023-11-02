@@ -28,20 +28,20 @@ using System.IO;
 
 namespace CookComputing.XmlRpc
 {
-	public class XmlRpcResponseEventArgs : EventArgs
-	{
-		public XmlRpcResponseEventArgs(Guid guid, long request,
-									   Stream responseStream)
-		{
-			ProxyID        = guid;
-			RequestNum     = request;
-			ResponseStream = responseStream;
-		}
+    public class XmlRpcResponseEventArgs : EventArgs
+    {
+        public XmlRpcResponseEventArgs(Guid guid, long request,
+                                       Stream responseStream)
+        {
+            ProxyID = guid;
+            RequestNum = request;
+            ResponseStream = responseStream;
+        }
 
-		public Guid ProxyID { get; }
+        public Guid ProxyID { get; }
 
-		public long RequestNum { get; }
+        public long RequestNum { get; }
 
-		public Stream ResponseStream { get; }
-	}
+        public Stream ResponseStream { get; }
+    }
 }

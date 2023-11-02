@@ -29,40 +29,40 @@ using System.Threading;
 
 namespace CookComputing.XmlRpc
 {
-	public class XmlRpcRequest
-	{
-		private static int      s_created;
-		public         object[] args;
+    public class XmlRpcRequest
+    {
+        private static int s_created;
+        public object[] args;
 
-		public string     method;
-		public MethodInfo mi;
-		public int        number = Interlocked.Increment(ref s_created);
-		public Guid       proxyId;
-		public string     xmlRpcMethod;
+        public string method;
+        public MethodInfo mi;
+        public int number = Interlocked.Increment(ref s_created);
+        public Guid proxyId;
+        public string xmlRpcMethod;
 
-		public XmlRpcRequest() { }
+        public XmlRpcRequest() { }
 
-		public XmlRpcRequest(string methodName, object[] parameters, MethodInfo methodInfo)
-		{
-			method = methodName;
-			args   = parameters;
-			mi     = methodInfo;
-		}
+        public XmlRpcRequest(string methodName, object[] parameters, MethodInfo methodInfo)
+        {
+            method = methodName;
+            args = parameters;
+            mi = methodInfo;
+        }
 
-		public XmlRpcRequest(string methodName, object[] parameters,
-							 MethodInfo methodInfo, string XmlRpcMethod, Guid proxyGuid)
-		{
-			method       = methodName;
-			args         = parameters;
-			mi           = methodInfo;
-			xmlRpcMethod = XmlRpcMethod;
-			proxyId      = proxyGuid;
-		}
+        public XmlRpcRequest(string methodName, object[] parameters,
+                             MethodInfo methodInfo, string XmlRpcMethod, Guid proxyGuid)
+        {
+            method = methodName;
+            args = parameters;
+            mi = methodInfo;
+            xmlRpcMethod = XmlRpcMethod;
+            proxyId = proxyGuid;
+        }
 
-		public XmlRpcRequest(string methodName, object[] parameters)
-		{
-			method = methodName;
-			args   = parameters;
-		}
-	}
+        public XmlRpcRequest(string methodName, object[] parameters)
+        {
+            method = methodName;
+            args = parameters;
+        }
+    }
 }

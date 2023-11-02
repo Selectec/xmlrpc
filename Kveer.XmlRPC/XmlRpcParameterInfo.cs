@@ -27,28 +27,29 @@ using System;
 
 namespace CookComputing.XmlRpc
 {
-	public class XmlRpcParameterInfo
-	{
-		private string _name;
+    public class XmlRpcParameterInfo
+    {
+        private string _name;
 
-		public string Doc { get; set; }
+        public string Doc { get; set; }
 
-		public bool IsParams { get; set; }
+        public bool IsParams { get; set; }
 
-		public string Name
-		{
-			get => _name;
-			set {
-				_name = value;
-				if (XmlRpcName == "")
-					XmlRpcName = _name;
-			}
-		}
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                if (XmlRpcName == "")
+                    XmlRpcName = _name;
+            }
+        }
 
-		public string XmlRpcName { get; set; }
+        public string XmlRpcName { get; set; }
 
-		public Type Type { get; set; }
+        public Type Type { get; set; }
 
-		public string XmlRpcType { get; set; }
-	}
+        public string XmlRpcType { get; set; }
+    }
 }

@@ -27,29 +27,29 @@ using System;
 
 namespace CookComputing.XmlRpc
 {
-	public enum MappingAction
-	{
-		Ignore,
-		Error
-	}
+    public enum MappingAction
+    {
+        Ignore,
+        Error
+    }
 
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Struct
-										   | AttributeTargets.Property | AttributeTargets.Class)]
-	public class XmlRpcMissingMappingAttribute : Attribute
-	{
-		public XmlRpcMissingMappingAttribute() { }
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Struct
+                                           | AttributeTargets.Property | AttributeTargets.Class)]
+    public class XmlRpcMissingMappingAttribute : Attribute
+    {
+        public XmlRpcMissingMappingAttribute() { }
 
-		public XmlRpcMissingMappingAttribute(MappingAction action)
-		{
-			Action = action;
-		}
+        public XmlRpcMissingMappingAttribute(MappingAction action)
+        {
+            Action = action;
+        }
 
-		public MappingAction Action { get; } = MappingAction.Error;
+        public MappingAction Action { get; } = MappingAction.Error;
 
-		public override string ToString()
-		{
-			var value = Action.ToString();
-			return value;
-		}
-	}
+        public override string ToString()
+        {
+            var value = Action.ToString();
+            return value;
+        }
+    }
 }

@@ -25,35 +25,35 @@ DEALINGS IN THE SOFTWARE.
 
 namespace CookComputing.XmlRpc
 {
-	using System;
+    using System;
 
-	[AttributeUsage(AttributeTargets.Method)]
-	public class XmlRpcBeginAttribute : Attribute
-	{
-		public XmlRpcBeginAttribute()
-		{
-		}
+    [AttributeUsage(AttributeTargets.Method)]
+    public class XmlRpcBeginAttribute : Attribute
+    {
+        public XmlRpcBeginAttribute()
+        {
+        }
 
-		public XmlRpcBeginAttribute(string method)
-		{
-			Method = method;
-		}
+        public XmlRpcBeginAttribute(string method)
+        {
+            Method = method;
+        }
 
         public string Description { get; set; } = "";
 
         public bool Hidden { get; set; } = false;
 
-		public string Method { get; } = "";
+        public string Method { get; } = "";
 
-		public Type ReturnType { get; set; } = null;
+        public Type ReturnType { get; set; } = null;
 
-		public bool IntrospectionMethod { get; set; } = false;
+        public bool IntrospectionMethod { get; set; } = false;
 
-		public override string ToString()
-		{
-			var value = "Method : " + Method;
-			return value;
-		}
+        public override string ToString()
+        {
+            var value = "Method : " + Method;
+            return value;
+        }
 
     }
 }

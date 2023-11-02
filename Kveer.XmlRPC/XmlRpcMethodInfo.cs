@@ -28,30 +28,30 @@ using System.Reflection;
 
 namespace CookComputing.XmlRpc
 {
-	public class XmlRpcMethodInfo : IComparable
-	{
-		public bool IsHidden { get; set; }
+    public class XmlRpcMethodInfo : IComparable
+    {
+        public bool IsHidden { get; set; }
 
-		public string Doc { get; set; } = "";
+        public string Doc { get; set; } = "";
 
-		public MethodInfo MethodInfo { get; set; }
+        public MethodInfo MethodInfo { get; set; }
 
-		public string MiName { get; set; } = "";
+        public string MiName { get; set; } = "";
 
-		public XmlRpcParameterInfo[] Parameters { get; set; }
+        public XmlRpcParameterInfo[] Parameters { get; set; }
 
-		public Type ReturnType { get; set; }
+        public Type ReturnType { get; set; }
 
-		public string ReturnXmlRpcType { get; set; }
+        public string ReturnXmlRpcType { get; set; }
 
-		public string ReturnDoc { get; set; } = "";
+        public string ReturnDoc { get; set; } = "";
 
-		public string XmlRpcName { get; set; } = "";
+        public string XmlRpcName { get; set; } = "";
 
-		public int CompareTo(object obj)
-		{
-			var xmi = (XmlRpcMethodInfo) obj;
-			return XmlRpcName.CompareTo(xmi.XmlRpcName);
-		}
-	}
+        public int CompareTo(object obj)
+        {
+            var xmi = (XmlRpcMethodInfo)obj;
+            return XmlRpcName.CompareTo(xmi.XmlRpcName);
+        }
+    }
 }
