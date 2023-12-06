@@ -18,8 +18,8 @@
     <PackageProjectUrl>https://github.com/LordVeovis/xmlrpc</PackageProjectUrl>
     <RepositoryUrl>git@github.com:LordVeovis/xmlrpc.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.3.57</AssemblyVersion>
-    <FileVersion>1.0.3.57</FileVersion>
+    <AssemblyVersion>1.0.3.58</AssemblyVersion>
+    <FileVersion>1.0.3.58</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
